@@ -261,7 +261,7 @@ function Minimax(board, isMaxPlayer, alpha, beta, steps) {
       var maxScore = -1000; // negative (that is < -100) so there will be always a bestMove
       var bestMove;
       // evaluating each possibility of dropping the disc in every column 
-      for (var column=0; column < 7; column++) {
+      for (var column of [3,4,2,5,1,0]) { // goes from middle to sides to maximise alpha-beta purning.
           var inserted = insertAt(board, column, PLAYERS.AI)
           if (inserted == -1)
             continue;
@@ -286,7 +286,7 @@ function Minimax(board, isMaxPlayer, alpha, beta, steps) {
   }else { // if it is the human turn
 
       var minScore = 1000; // positive (& greater than 100), so there will always be a best move for the human player.
-      for (var column=0; column < 7; column++) {
+      for (var column of [3,4,2,5,1,0]) { // goes from middle to sides to maximise alpha-beta purning.
         var inserted = insertAt(board, column, PLAYERS.HUMAN)
         if (inserted == -1)
           continue;
